@@ -1,6 +1,6 @@
 import os
 
-def load_dictionary(longest_word_length):
+def load_dictionary(min_word_len, max_word_len):
     f = file('dict')
     out = f.readlines()
     # Strip the newlines
@@ -8,9 +8,11 @@ def load_dictionary(longest_word_length):
     # Strip the acronyms
     out = filter(lambda x: not x==x.upper(), out)
     # Strip the long words
-    if longest_word_length < 0:
-        longest_word_length = 8
-    out = filter(lambda x: len(x)<=longest_word_length, out)
+    if max_word_len < 0:
+        max_word_len = 8
+    out = filter(lambda x: len(x)<=max_word_len, out)
+    if min_word_len > 1:
+        out = filter(lambda x: len(x)>=min_word_len, out)
     return out
 
 def uniqueletters(chars):
@@ -59,12 +61,12 @@ def get_subset_words(dictionary, charlist):
     return out
 
 
-def main(charlist, longest_word_length):
+def main(charlist, min_word_len, max_word_len):
     charlist = charlist.lower()
     charlist = uniqueletters(charlist)
     print "==> MneumonicFinder v1.0"
     print "--> Loading dictionary..."
-    dictionary = load_dictionary(longest_word_length)
+    dictionary = load_dictionary(min_word_len, max_word_len)
     print "--> Search string:", charlist
     words = get_subset_words(dictionary, charlist)
 
@@ -81,17 +83,16 @@ def main(charlist, longest_word_length):
         mneumonic = create_mneumonic(charlist, words)
         if not len(mneumonic): break
         print "--> Mneumonic:", mneumonic
-        words = filter(lambda x: x not in mneumonic, words)
-
-
+        words = filter(lambda x: not x==mneumonic[0], words)
 
 if __name__=='__main__':
     import argparse
 
     parser = argparse.ArgumentParser(description='Search the dictionary for mneumonic strings of words used to memorize a set of characters.')
     parser.add_argument('charlist', metavar='characters', type=str, help='List of characters to memorize')
-    parser.add_argument('--maxlen', dest='length', default=-1, type=int, help='Longest permitted length of word')
+    parser.add_argument('--maxlen', dest='maxlen', default=-1, type=int, help='Longest permitted length of word')
+    parser.add_argument('--minlen', dest='minlen', default=1,  type=int, help='Shortest permitted length of word')
 
     args = parser.parse_args()
-    main(args.charlist, args.length)
+    main(args.charlist, args.minlen, args.maxlen)
 
