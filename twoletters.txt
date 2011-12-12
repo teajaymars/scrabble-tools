@@ -1,0 +1,213 @@
+RAW
+===
+aa
+ab
+ad
+ae
+ag
+ah
+ai
+al
+am
+an
+ar
+as
+at
+aw
+ax
+ay
+ba
+be
+bi
+bo
+by
+ch
+da
+de
+di
+do
+ea
+ed
+ee
+ef
+eh
+el
+em
+en
+er
+es
+et
+ex
+fa
+fe
+fy
+gi
+go
+gu
+ha
+he
+hi
+hm
+ho
+id
+if
+in
+io
+is
+it
+ja
+jo
+ka
+ki
+ko
+ky
+la
+li
+lo
+ma
+me
+mi
+mm
+mo
+mu
+my
+na
+ne
+no
+nu
+ny
+ob
+od
+oe
+of
+oh
+oi
+om
+on
+oo
+op
+or
+os
+ou
+ow
+ox
+oy
+pa
+pe
+pi
+po
+qi
+re
+sh
+si
+so
+st
+ta
+te
+ti
+to
+ug
+uh
+um
+un
+up
+ur
+us
+ut
+we
+wo
+xi
+xu
+ya
+ye
+yo
+yu
+za
+zo
+
+CATEGORIZED
+===========
+aa ab ad ae ag ah ai al am an ar as at aw ax ay
+ba be bi bo by
+ch
+da de di do
+ea ed ee ef eh el em en er es et ex
+fa fe fy
+gi go gu
+ha he hi hm ho
+id if in io is it
+ja jo
+ka ki ko ky
+la li lo
+ma me mi mm mo mu my
+na ne no nu ny
+ob od oe of oh oi om on oo op or os ou ow ox oy
+pa pe pi po
+qi
+re
+sh si so st
+ta te ti to
+ug uh um un up ur us ut
+we wo
+xi xu
+ya ye yo yu
+za zo
+
+EXTRACTED
+=========
+a abdeghilmnrstwxy
+b aeioy
+c h
+d aeio
+e adefhlmnrstx
+f aey
+g iou
+h aeimo
+i dfnost
+j ao
+k aioy
+l aio
+m aeimouy
+n aeouy
+o bdefhimnoprsuwxy
+p aeio
+q i
+r e
+s hiot
+t aeio
+u ghmnprst
+w eo
+x iu
+y aeou
+z ao
+
+SORTED
+======
+a abdeghilmnrstwxy
+o bdefhimnoprsuwxy
+e adefhlmnrstx
+u ghmnprst
+m aeimouy
+i dfnost
+b aeioy
+h aeimo
+n aeouy
+p aeio
+s hiot
+t aeio
+y aeou
+d aeio
+k aioy
+f aey
+g iou
+l aio
+j ao
+w eo
+x iu
+z ao
+c h
+q i
+r e
+
+
+
