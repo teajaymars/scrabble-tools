@@ -1,6 +1,6 @@
 import os
 
-def load_dictionary():
+def load_dictionary(longest_word_length):
     f = file('dict')
     out = f.readlines()
     # Strip the newlines
@@ -8,7 +8,9 @@ def load_dictionary():
     # Strip the acronyms
     out = filter(lambda x: not x==x.upper(), out)
     # Strip the long words
-    out = filter(lambda x: len(x)<=8, out)
+    if longest_word_length < 0:
+        longest_word_length = 8
+    out = filter(lambda x: len(x)<=longest_word_length, out)
     return out
 
 def uniqueletters(chars):
@@ -38,7 +40,8 @@ def create_mneumonic(charlist, wordlist):
                 best = score
                 bestword = word
         if not len(bestword):
-            raise ValueError, 'the mneumonic cannot be completed.'
+            print 'No further mneumonics can be found.'
+            return []
         out.append(bestword)
         # Subtract the bestword from the remaining characters to cover
         for key in bestword:
@@ -56,12 +59,12 @@ def get_subset_words(dictionary, charlist):
     return out
 
 
-def main(charlist):
+def main(charlist, longest_word_length):
     charlist = charlist.lower()
     charlist = uniqueletters(charlist)
-    print "==> MemoryAid v1.0"
+    print "==> MneumonicFinder v1.0"
     print "--> Loading dictionary..."
-    dictionary = load_dictionary()
+    dictionary = load_dictionary(longest_word_length)
     print "--> Search string:", charlist
     words = get_subset_words(dictionary, charlist)
 
@@ -76,15 +79,19 @@ def main(charlist):
     print '--> Generating...'
     while True:
         mneumonic = create_mneumonic(charlist, words)
+        if not len(mneumonic): break
         print "--> Mneumonic:", mneumonic
         words = filter(lambda x: x not in mneumonic, words)
 
+
+
 if __name__=='__main__':
-    import sys
-    try:
-        charlist = sys.argv[1]
-    except:
-        print "Usage:", sys.argv[0],"collection_of_letters"
-    else:
-        main(charlist)
+    import argparse
+
+    parser = argparse.ArgumentParser(description='Search the dictionary for mneumonic strings of words used to memorize a set of characters.')
+    parser.add_argument('charlist', metavar='characters', type=str, help='List of characters to memorize')
+    parser.add_argument('--maxlen', dest='length', default=-1, type=int, help='Longest permitted length of word')
+
+    args = parser.parse_args()
+    main(args.charlist, args.length)
 
