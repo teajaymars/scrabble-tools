@@ -1,49 +1,49 @@
 MNEUMONICS
 ==========
 a abdeghilmnrstwxy
---> Mneumonic: ['ailments', 'hybrid', 'waxing']
---> Mneumonic: ['almighty', 'benders', 'wax']
---> Mneumonic: ['exhaling', 'bedstraw', 'my']
---> Mneumonic: ['tangibly', 'shrewd', 'max']
+--> Mnemonic: ['ailments', 'hybrid', 'waxing']
+--> Mnemonic: ['almighty', 'benders', 'wax']
+--> Mnemonic: ['exhaling', 'bedstraw', 'my']
+--> Mnemonic: ['tangibly', 'shrewd', 'max']
 
 o bdefhimnoprsuwxy
---> Mneumonic: ['wineshop', 'dumber', 'foxy']
---> Mneumonic: ['punisher', 'byword', 'fix', 'me']
---> Mneumonic: ['bushfire', 'downy', 'mixup']
---> Mneumonic: ['pushdown', 'firebox', 'my']
+--> Mnemonic: ['wineshop', 'dumber', 'foxy']
+--> Mnemonic: ['punisher', 'byword', 'fix', 'me']
+--> Mnemonic: ['bushfire', 'downy', 'mixup']
+--> Mnemonic: ['pushdown', 'firebox', 'my']
 
 e adefhlmnrstx
---> Mneumonic: ['freshmen', 'exalted']
+--> Mnemonic: ['freshmen', 'exalted']
 
 u ghmnprst
---> Mneumonic: ['shtg', 'nm', 'rpt']
+--> Mnemonic: ['shtg', 'nm', 'rpt']
 
 m aeimouy
---> Mneumonic: ['aim', 'you', 'me']
+--> Mnemonic: ['aim', 'you', 'me']
 
 i dfnost
---> Mneumonic: ['snot', 'food']
+--> Mnemonic: ['snot', 'food']
 
 b aeioy
---> Mneumonic: ['aye', 'ii', 'oyo']
---> Mneumonic: ['yea', 'ii', 'oyo']
---> Mneumonic: ['aye', 'i', 'yo']
+--> Mnemonic: ['aye', 'ii', 'oyo']
+--> Mnemonic: ['yea', 'ii', 'oyo']
+--> Mnemonic: ['aye', 'i', 'yo']
 
 h aeimo
---> Mneumonic: ['ami', 'memo']
---> Mneumonic: ['i', 'am', 'emo']
+--> Mnemonic: ['ami', 'memo']
+--> Mnemonic: ['i', 'am', 'emo']
 
 n aeouy
---> Mneumonic: ['aye', 'you']
---> Mneumonic: ['yea', 'you']
+--> Mnemonic: ['aye', 'you']
+--> Mnemonic: ['yea', 'you']
 
 p aeio
 None
 
 s hiot
---> Mneumonic: ['hit', 'oh']
---> Mneumonic: ['tooth', 'i']
---> Mneumonic: ['itooth']
+--> Mnemonic: ['hit', 'oh']
+--> Mnemonic: ['tooth', 'i']
+--> Mnemonic: ['itooth']
 
 t aeio
 None
@@ -58,10 +58,10 @@ k aioy
 None
 
 f aey
---> Mneumonic: ['aye']
+--> Mnemonic: ['aye']
 
 g iou
---> Mneumonic: ['oui']
+--> Mnemonic: ['oui']
 
 l aio
 None
@@ -89,7 +89,7 @@ None
 
 
 
-My Chosen Mneumonics
+My Chosen Mnemonics
 ====================
 >> MNEUMONICS
 a: my exhaling bedstraw
@@ -104,7 +104,7 @@ s: itooth
 f: aye
 g: oui
 
->> LISTS (No mneumonic could be found)
+>> LISTS (No mnemonic could be found)
 u: shtgnmrpt
 p: aeio
 t: aeio

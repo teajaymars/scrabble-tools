@@ -30,7 +30,7 @@ def intersect(word, charlist):
         if key in charlist: count+=1
     return count
 
-def create_mneumonic(charlist, wordlist):
+def create_mnemonic(charlist, wordlist):
     '''Return an array of words from wordlist which covers all characters in charlist.'''
     out = []
     while len(charlist):
@@ -42,7 +42,7 @@ def create_mneumonic(charlist, wordlist):
                 best = score
                 bestword = word
         if not len(bestword):
-            print 'No further mneumonics can be found.'
+            print 'No further mnemonics can be found.'
             return []
         out.append(bestword)
         # Subtract the bestword from the remaining characters to cover
@@ -64,7 +64,7 @@ def get_subset_words(dictionary, charlist):
 def main(charlist, min_word_len, max_word_len):
     charlist = charlist.lower()
     charlist = uniqueletters(charlist)
-    print "==> MneumonicFinder v1.0"
+    print "==> MnemonicFinder v1.0"
     print "--> Loading dictionary..."
     dictionary = load_dictionary(min_word_len, max_word_len)
     print "--> Search string:", charlist
@@ -77,18 +77,18 @@ def main(charlist, min_word_len, max_word_len):
     # Process the word list
     words.sort(cmp=comparator)
 
-    # Build some mneumonics
+    # Build some mnemonics
     print '--> Generating...'
     while True:
-        mneumonic = create_mneumonic(charlist, words)
-        if not len(mneumonic): break
-        print "--> Mneumonic:", mneumonic
-        words = filter(lambda x: not x==mneumonic[0], words)
+        mnemonic = create_mnemonic(charlist, words)
+        if not len(mnemonic): break
+        print "--> Mnemonic:", mnemonic
+        words = filter(lambda x: not x==mnemonic[0], words)
 
 if __name__=='__main__':
     import argparse
 
-    parser = argparse.ArgumentParser(description='Search the dictionary for mneumonic strings of words used to memorize a set of characters.')
+    parser = argparse.ArgumentParser(description='Search the dictionary for mnemonic strings of words used to memorize a set of characters.')
     parser.add_argument('charlist', metavar='characters', type=str, help='List of characters to memorize')
     parser.add_argument('--maxlen', dest='maxlen', default=-1, type=int, help='Longest permitted length of word')
     parser.add_argument('--minlen', dest='minlen', default=1,  type=int, help='Shortest permitted length of word')

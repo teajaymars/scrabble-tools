@@ -2,11 +2,11 @@
 Scrabble Tools
 ==============
 
-mneumonicfinder.py
+mnemonicfinder.py
 ------------------
-    usage: mneumonicfinder.py [-h] [--maxlen MAXLEN] [--minlen MINLEN] characters
+    usage: mnemonicfinder.py [-h] [--maxlen MAXLEN] [--minlen MINLEN] characters
     
-    Search the dictionary for mneumonic strings of words used to memorize a set of characters.
+    Search the dictionary for mnemonic strings of words used to memorize a set of characters.
     
     positional arguments:
       characters       List of characters to memorize
@@ -24,9 +24,9 @@ Every two-letter word permissible in Scrabble. (Refactored various ways).
 
 results.txt
 -----------
-Using mneumonicfinder.py to search for 26 strings to help me memorise the contents of twoletters.txt by remembering every possible suffix of each letter.
+Using mnemonicfinder.py to search for 26 strings to help me memorise the contents of twoletters.txt by remembering every possible suffix of each letter.
 
-These results are pretty personal to me. You might want to use mneumonicfinder to search for your own mneumonics:
+These results are pretty personal to me. You might want to use mnemonicfinder to search for your own mnemonics:
 
     a: my exhaling bedstraw
     o: push down my firebox
