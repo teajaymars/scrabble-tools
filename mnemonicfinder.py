@@ -16,7 +16,7 @@ def load_dictionary(min_word_len, max_word_len, filename='/usr/share/dict/americ
 
 def intersect(word, charlist):
     '''How many characters do these two strings have in common?'''
-    return len(set(word).intersection(set(charlist)))
+    return len(set(word).intersection(charlist))
 
 
 def create_mnemonic(charlist, wordlist):
@@ -27,8 +27,7 @@ def create_mnemonic(charlist, wordlist):
         for word in wordlist:
             score = intersect(word, charlist)
             if score > best:
-                best = score
-                bestword = word
+                best, bestword = score, word
         if not bestword:
             print 'No further mnemonics can be found.'
             return []
@@ -39,9 +38,8 @@ def create_mnemonic(charlist, wordlist):
 
 
 def get_subset_words(dictionary, charlist):
-    charlist = set(charlist)
-    return [word for word in dictionary if set(word)
-            .issubset(charlist)]
+    return [word for word in dictionary if set(word).issubset(charlist)]
+
 
 def main(charlist, min_word_len, max_word_len):
     charlist = set(charlist.lower())
@@ -55,11 +53,12 @@ def main(charlist, min_word_len, max_word_len):
     print '--> Generating...'
     while True:
         mnemonic = create_mnemonic(charlist, words)
-        if not len(mnemonic): break
+        if not mnemonic: break
         print "--> Mnemonic:", mnemonic
         words = filter(lambda x: not x==mnemonic[0], words)
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser(description='Search the dictionary for mnemonic strings of words used to memorize a set of characters.')
