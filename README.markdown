@@ -4,18 +4,17 @@ Scrabble Tools
 
 mneumonicfinder.py
 ------------------
-usage: mneumonicfinder.py [-h] [--maxlen MAXLEN] [--minlen MINLEN] characters
-
-Search the dictionary for mneumonic strings of words used to memorize a set of
-characters.
-
-positional arguments:
-  characters       List of characters to memorize
-
-optional arguments:
-  -h, --help       show this help message and exit
-  --maxlen MAXLEN  Longest permitted length of word
-  --minlen MINLEN  Shortest permitted length of word
+    usage: mneumonicfinder.py [-h] [--maxlen MAXLEN] [--minlen MINLEN] characters
+    
+    Search the dictionary for mneumonic strings of words used to memorize a set of characters.
+    
+    positional arguments:
+      characters       List of characters to memorize
+    
+    optional arguments:
+      -h, --help       show this help message and exit
+      --maxlen MAXLEN  Longest permitted length of word
+      --minlen MINLEN  Shortest permitted length of word
 
 
 twoletters.txt
