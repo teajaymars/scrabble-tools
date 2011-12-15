@@ -48,12 +48,13 @@ def main(charlist, min_word_len, max_word_len):
 
 
 if __name__ == '__main__':
-    import argparse
-
-    parser = argparse.ArgumentParser(description='Search the dictionary for mnemonic strings of words used to memorize a set of characters.')
-    parser.add_argument('--charlist', metavar='characters', type=str, help='List of characters to memorize')
-    parser.add_argument('--maxlen', dest='maxlen', default=8, type=int, help='Longest permitted length of word')
-    parser.add_argument('--minlen', dest='minlen', default=1,  type=int, help='Shortest permitted length of word')
-
-    args = parser.parse_args()
-    main(args.charlist, args.minlen, args.maxlen)
+    from optparse import OptionParser, make_option
+    usage = 'Search the dictionary for mnemonic strings of words used to memorize a set of characters.'
+    option_list = [
+        make_option('--charlist', metavar='characters', type=str, help='List of characters to memorize'),
+        make_option('--maxlen', dest='maxlen', default=8, type=int, help='Longest permitted length of word'),
+        make_option('--minlen', dest='minlen', default=1,  type=int, help='Shortest permitted length of word'),
+    ]
+    parser = OptionParser(usage=usage, option_list=option_list,  add_help_option=True)
+    options, _ = parser.parse_args()
+    main(options.charlist, options.minlen, options.maxlen)
