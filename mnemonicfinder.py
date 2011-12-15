@@ -14,20 +14,14 @@ def load_dictionary(min_word_len, max_word_len, filename='/usr/share/dict/americ
         return out
 
 
-def intersect(word, charlist):
-    '''How many characters do these two strings have in common?'''
-    return len(set(word).intersection(charlist))
-
-
 def create_mnemonic(charlist, wordlist):
     '''Return an array of words from wordlist which covers all characters in charlist.'''
+    def word_score(word):
+        '''How many characters do these two strings have in common?'''
+        return len(set(word).intersection(charlist))
     out = []
     while charlist:
-        best, bestword = 0, ''
-        for word in wordlist:
-            score = intersect(word, charlist)
-            if score > best:
-                best, bestword = score, word
+        bestword = max((word for word in wordlist), key=word_score)
         if not bestword:
             print 'No further mnemonics can be found.'
             return []
