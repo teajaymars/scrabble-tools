@@ -1,17 +1,12 @@
 import os
+from string import ascii_lowercase
 
 def load_dictionary(min_word_len, max_word_len, filename='/usr/share/dict/american-english'):
+    lower = set(ascii_lowercase)
     with open(filename) as f:
-        out = [line.rstrip() for line in f]
-        # Strip the acronyms
-        out = filter(lambda x: not x==x.upper(), out)
-        # Strip the long words
-        if max_word_len < 0:
-            max_word_len = 8
-        out = filter(lambda x: len(x)<=max_word_len, out)
-        if min_word_len > 1:
-            out = filter(lambda x: len(x)>=min_word_len, out)
-        return out
+        outiter = (line.rstrip() for line in f)
+        loweriter = (word for word in outiter if all(c in lower for c in word))
+        return [word for word in loweriter if min_word_len <= len(word) <= max_word_len]
 
 
 def create_mnemonic(charlist, wordlist):
@@ -36,11 +31,11 @@ def get_subset_words(dictionary, charlist):
 
 
 def main(charlist, min_word_len, max_word_len):
-    charlist = set(charlist.lower())
     print "==> MnemonicFinder v1.0"
     print "--> Loading dictionary..."
     dictionary = load_dictionary(min_word_len, max_word_len)
     print "--> Search string:", charlist
+    charlist = set(charlist.lower())
     words = sorted(get_subset_words(dictionary, charlist), key=len)
 
     # Build some mnemonics
@@ -57,7 +52,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='Search the dictionary for mnemonic strings of words used to memorize a set of characters.')
     parser.add_argument('--charlist', metavar='characters', type=str, help='List of characters to memorize')
-    parser.add_argument('--maxlen', dest='maxlen', default=-1, type=int, help='Longest permitted length of word')
+    parser.add_argument('--maxlen', dest='maxlen', default=8, type=int, help='Longest permitted length of word')
     parser.add_argument('--minlen', dest='minlen', default=1,  type=int, help='Shortest permitted length of word')
 
     args = parser.parse_args()
