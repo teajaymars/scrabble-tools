@@ -15,14 +15,17 @@ def create_mnemonic(charlist, wordlist):
         '''How many characters do these two strings have in common?'''
         return len(set(word).intersection(charlist))
     out = []
+    wordlist = set(wordlist)
     while charlist:
-        bestword = max(wordlist, key=word_score)
-        if not bestword:
+        try:
+            bestword = max(wordlist, key=word_score)
+        except ValueError:
             print 'No further mnemonics can be found.'
             return []
         out.append(bestword)
         # Subtract the bestword from the remaining characters to cover
         charlist = charlist - set(bestword)
+        wordlist = wordlist - set([bestword])
     return out
 
 
@@ -44,7 +47,8 @@ def main(charlist, min_word_len, max_word_len):
         mnemonic = create_mnemonic(charlist, words)
         if not mnemonic: break
         print "--> Mnemonic:", mnemonic
-        words = filter(lambda x: not x==mnemonic[0], words)
+        i = words.index(mnemonic[0])
+        words = words[:i] + words[i+1:]
 
 
 if __name__ == '__main__':
