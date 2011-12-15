@@ -21,7 +21,7 @@ def create_mnemonic(charlist, wordlist):
         return len(set(word).intersection(charlist))
     out = []
     while charlist:
-        bestword = max((word for word in wordlist), key=word_score)
+        bestword = max(wordlist, key=word_score)
         if not bestword:
             print 'No further mnemonics can be found.'
             return []
