@@ -4,38 +4,26 @@ Scrabble Tools
 
 mnemonicfinder.py
 ------------------
-    usage: mnemonicfinder.py [-h] [--maxlen MAXLEN] [--minlen MINLEN] characters
-    
-    Search the dictionary for mnemonic strings of words used to memorize a set of characters.
-    
+    usage: mnemonicfinder.py [-h] [-v] [--dict DICTFILE] [--maxlen MAXLEN]
+                             [--minlen MINLEN]
+                             charlist
+
+    Search the dictionary for mnemonic strings of words used to memorize a set of
+    characters.
+
     positional arguments:
-      characters       List of characters to memorize
-    
+      charlist         List of characters to memorize
+
     optional arguments:
       -h, --help       show this help message and exit
+      -v               Allow mnemonics to optionally use any vowels
+      --dict DICTFILE  Dictionary file to use
       --maxlen MAXLEN  Longest permitted length of word
       --minlen MINLEN  Shortest permitted length of word
 
+Results
+-------
 
-twoletters.txt
---------------
-Every two-letter word permissible in Scrabble. (Refactored various ways).
+My first attempt is [documented here](https://gist.github.com/3137931) for postereity. I had limited success finding mnemonics for small word lists because of the lack of vowels; this led to the development of the later versions of the algorithm which include the `-v` option for free vowel use. (Obviously this requires a different system of memorisation; one that treats consonants and vowels separately).
 
 
-results.txt
------------
-Using mnemonicfinder.py to search for 26 strings to help me memorise the contents of twoletters.txt by remembering every possible suffix of each letter.
-
-These results are pretty personal to me. You might want to use mnemonicfinder to search for your own mnemonics:
-
-    a: my exhaling bedstraw
-    o: push down my firebox
-    e: exalted freshman
-    m: aim you me
-    i: snot food
-    b: oi aye
-    h: i am emo
-    n: yea you
-    s: itooth
-    f: aye
-    g: oui
