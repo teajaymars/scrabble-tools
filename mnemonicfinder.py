@@ -53,7 +53,7 @@ if __name__ == '__main__':
     parser.add_argument('charlist', type=str, help='List of characters to memorize'),
     parser.add_argument('-v', dest='use_vowels', action="store_true", default=False, help='Allow mnemonics to optionally use any vowels')
     parser.add_argument('--dict', default='./dict', dest='dictfile', type=str, help='Dictionary file to use'),
-    parser.add_argument('--maxlen', default=8, type=int, help='Longest permitted length of word'),
-    parser.add_argument('--minlen', default=1,  type=int, help='Shortest permitted length of word'),
+    parser.add_argument('--maxlen', default=11, type=int, help='Longest permitted length of word'),
+    parser.add_argument('--minlen', default=3,  type=int, help='Shortest permitted length of word'),
     arg = parser.parse_args()
     main(arg.charlist, arg.minlen, arg.maxlen, arg.dictfile, arg.use_vowels)
