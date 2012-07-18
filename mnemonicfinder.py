@@ -33,10 +33,10 @@ def get_subset_words(dictionary, charlist):
     return [word for word in dictionary if set(word).issubset(charlist)]
 
 
-def main(charlist, min_word_len, max_word_len):
+def main(charlist, min_word_len, max_word_len, dictfile):
     print "==> MnemonicFinder v1.0"
     print "--> Loading dictionary..."
-    dictionary = load_dictionary(min_word_len, max_word_len)
+    dictionary = load_dictionary(min_word_len, max_word_len, dictfile)
     print "--> Search string:", charlist
     charlist = set(charlist.lower())
     words = sorted(get_subset_words(dictionary, charlist), key=len)
@@ -52,13 +52,11 @@ def main(charlist, min_word_len, max_word_len):
 
 
 if __name__ == '__main__':
-    from optparse import OptionParser, make_option
-    usage = 'Search the dictionary for mnemonic strings of words used to memorize a set of characters.'
-    option_list = [
-        make_option('--charlist', metavar='characters', type=str, help='List of characters to memorize'),
-        make_option('--maxlen', dest='maxlen', default=8, type=int, help='Longest permitted length of word'),
-        make_option('--minlen', dest='minlen', default=1,  type=int, help='Shortest permitted length of word'),
-    ]
-    parser = OptionParser(usage=usage, option_list=option_list,  add_help_option=True)
-    options, _ = parser.parse_args()
-    main(options.charlist, options.minlen, options.maxlen)
+    import argparse, sys
+    parser = argparse.ArgumentParser(description='Search the dictionary for mnemonic strings of words used to memorize a set of characters.')
+    parser.add_argument('charlist', type=str, help='List of characters to memorize'),
+    parser.add_argument('--dict', default='./dict', dest='dictfile', type=str, help='Dictionary file to use'),
+    parser.add_argument('--maxlen', default=8, type=int, help='Longest permitted length of word'),
+    parser.add_argument('--minlen', default=1,  type=int, help='Shortest permitted length of word'),
+    arg = parser.parse_args()
+    main(arg.charlist, arg.minlen, arg.maxlen, arg.dictfile)
