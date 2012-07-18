@@ -25,17 +25,19 @@ def create_mnemonic(charset, wordlist):
         charset = charset - set(bestword)
     return out
 
-def subset_words(dictionary, charlist):
+def subset_words(dictionary, charlist, use_vowels):
+    if use_vowels:
+        charlist = charlist.union( set('aeiou') )
     is_subset = lambda(word) : set(word).issubset(charlist)
     return filter(is_subset, dictionary)
 
-def main(charlist, min_word_len, max_word_len, dictfile):
+def main(charlist, min_word_len, max_word_len, dictfile, use_vowels):
     print "==> MnemonicFinder v1.0"
     print "--> Loading dictionary..."
     dictionary = load_dictionary(min_word_len, max_word_len, dictfile)
     print "--> Search string:", charlist
     charset = set(charlist.lower())
-    words = sorted( subset_words(dictionary, charset) , key=len)
+    words = sorted( subset_words(dictionary, charset, use_vowels) , key=len)
     # Build some mnemonics
     print '--> Generating...'
     while True:
@@ -45,13 +47,13 @@ def main(charlist, min_word_len, max_word_len, dictfile):
         i = words.index(mnemonic[0])
         words = words[:i] + words[i+1:]
 
-
 if __name__ == '__main__':
     import argparse, sys
     parser = argparse.ArgumentParser(description='Search the dictionary for mnemonic strings of words used to memorize a set of characters.')
     parser.add_argument('charlist', type=str, help='List of characters to memorize'),
+    parser.add_argument('-v', dest='use_vowels', action="store_true", default=False, help='Allow mnemonics to optionally use any vowels')
     parser.add_argument('--dict', default='./dict', dest='dictfile', type=str, help='Dictionary file to use'),
     parser.add_argument('--maxlen', default=8, type=int, help='Longest permitted length of word'),
     parser.add_argument('--minlen', default=1,  type=int, help='Shortest permitted length of word'),
     arg = parser.parse_args()
-    main(arg.charlist, arg.minlen, arg.maxlen, arg.dictfile)
+    main(arg.charlist, arg.minlen, arg.maxlen, arg.dictfile, arg.use_vowels)
