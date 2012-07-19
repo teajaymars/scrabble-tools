@@ -1,4 +1,3 @@
-
 Scrabble Tools
 ==============
 
@@ -55,6 +54,8 @@ Using the tool to memorise the list "bdfhmnprswxy", which are all the *consonant
 Results
 -------
 
-My first attempt is [documented here](https://gist.github.com/3137931) for postereity. I had limited success finding mnemonics for small word lists because of the lack of vowels; this led to the development of the later versions of the algorithm which include the `-v` option for free vowel use. (Obviously this requires a different system of memorisation; one that treats consonants and vowels separately).
+ * I have [developed a system](https://gist.github.com/3141231) for memorising the two-letter words in International Scrabble tournaments.
+ * I have [developed a system](https://gist.github.com/3141380) for memorising the two-letter words in US/Canada Scrabble tournaments.
+ * My earlier attempt to do this is [documented here](https://gist.github.com/3137931) for postereity. I had limited success finding mnemonics for small word lists because of the lack of vowels; this led to the development of the later versions of the algorithm which include the `-v` option for free vowel use. (Obviously this requires a different system of memorisation; one that treats consonants and vowels separately).
 
 
