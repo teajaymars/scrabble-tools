@@ -4,7 +4,7 @@ Scrabble Tools
 mnemonicfinder.py
 ------------------
     usage: mnemonicfinder.py [-h] [-v] [--dict DICTFILE] [--maxlen MAXLEN]
-                             [--minlen MINLEN]
+                             [--minlen MINLEN] [--also ALSO]
                              charlist
 
     Search the dictionary for mnemonic strings of words used to memorize a set of
@@ -19,6 +19,7 @@ mnemonicfinder.py
       --dict DICTFILE  Dictionary file to use
       --maxlen MAXLEN  Longest permitted length of word
       --minlen MINLEN  Shortest permitted length of word
+      --also ALSO      Characters also permitted in mnemonic (but not required)
 
 Example
 -------

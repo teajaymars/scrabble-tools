@@ -25,19 +25,21 @@ def create_mnemonic(charset, wordlist):
         charset = charset - set(bestword)
     return out
 
-def subset_words(dictionary, charlist, use_vowels):
+def subset_words(dictionary, charlist, use_vowels, also):
     if use_vowels:
         charlist = charlist.union( set('aeiou') )
+    if also:
+        charlist = charlist.union( set(also) )
     is_subset = lambda(word) : set(word).issubset(charlist)
     return filter(is_subset, dictionary)
 
-def main(charlist, min_word_len, max_word_len, dictfile, use_vowels):
+def main(charlist, min_word_len, max_word_len, dictfile, use_vowels, also):
     print "==> MnemonicFinder v1.0"
     print "--> Loading dictionary..."
     dictionary = load_dictionary(min_word_len, max_word_len, dictfile)
     print "--> Search string:", charlist
-    charset = set(charlist.lower())
-    words = sorted( subset_words(dictionary, charset, use_vowels) , key=len)
+    charset = set(charlist.lower()) - set(also)
+    words = sorted( subset_words(dictionary, charset, use_vowels, also) , key=len)
     # Build some mnemonics
     print '--> Generating...'
     while True:
@@ -55,5 +57,6 @@ if __name__ == '__main__':
     parser.add_argument('--dict', default='./dict', dest='dictfile', type=str, help='Dictionary file to use'),
     parser.add_argument('--maxlen', default=11, type=int, help='Longest permitted length of word'),
     parser.add_argument('--minlen', default=3,  type=int, help='Shortest permitted length of word'),
+    parser.add_argument('--also', default='', type=str, help='Characters also permitted in mnemonic (but not required)'),
     arg = parser.parse_args()
-    main(arg.charlist, arg.minlen, arg.maxlen, arg.dictfile, arg.use_vowels)
+    main(arg.charlist, arg.minlen, arg.maxlen, arg.dictfile, arg.use_vowels, arg.also)
