@@ -14,15 +14,17 @@ def create_mnemonic(charset, wordlist):
     # Inner function: How many characters do these two strings have in common?
     word_score = lambda(word) : len(set(word).intersection(charset))
     out = []
+    unused_words = wordlist[:]
     while charset:
         try:
-            bestword = max(wordlist, key=word_score)
+            bestword = max(unused_words, key=word_score)
         except ValueError:
             print 'No further mnemonics can be found.'
             return []
         out.append(bestword)
         # Subtract the bestword from the remaining characters to cover
         charset = charset - set(bestword)
+        unused_words.remove(bestword)
     return out
 
 def subset_words(dictionary, charlist, use_vowels, also):
