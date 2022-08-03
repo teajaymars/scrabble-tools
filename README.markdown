@@ -36,7 +36,7 @@ Using the tool to memorise the list "abdeghilmnrstwxy", which are all the valid 
 
 Example: Free Vowels Mode
 -------------------------
-Using the tool to memorise the list "bdfhmnprswxy", which are all the *consonants* that can come after O on the Scrabble board. 
+Using the tool to memorise the list "bdfhmnprswxy", which are all the *consonants* that can come after O on the Scrabble board.
 
     $ python mnemonicfinder.py bdfhmnprswxy -v --dict dictcommon
     ==> MnemonicFinder v1.0
@@ -57,6 +57,4 @@ Results
 
  * I have [developed a system](https://gist.github.com/3141231) for memorising the two-letter words in International Scrabble tournaments.
  * I have [developed a system](https://gist.github.com/3141380) for memorising the two-letter words in US/Canada Scrabble tournaments.
- * My earlier attempt to do this is [documented here](https://gist.github.com/3137931) for postereity. I had limited success finding mnemonics for small word lists because of the lack of vowels; this led to the development of the later versions of the algorithm which include the `-v` option for free vowel use. (Obviously this requires a different system of memorisation; one that treats consonants and vowels separately).
-
-
+ * My earlier attempt to do this is [documented here](https://gist.github.com/3137931) for posterity. I had limited success finding mnemonics for small word lists because of the lack of vowels; this led to the development of the later versions of the algorithm which include the `-v` option for free vowel use. (Obviously this requires a different system of memorisation; one that treats consonants and vowels separately).
