@@ -3,23 +3,25 @@ from string import ascii_lowercase
 
 def load_dictionary(min_word_len, max_word_len, filename):
     lower = set(ascii_lowercase)
-    check_range = lambda(word) : min_word_len <= len(word) <= max_word_len
-    check_lowercase = lambda(word) : all(c in lower for c in word)
-    with open(filename) as f:
-        all_words = (line.rstrip() for line in f)
-        return filter(check_lowercase, filter(check_range, all_words) )
+    check_range = lambda word : min_word_len <= len(word) <= max_word_len
+    check_lowercase = lambda word : all(c in lower for c in word)
+
+    f = open(filename)
+    all_words = (line.rstrip() for line in f)
+    return filter(check_lowercase, filter(check_range, all_words) )
+    f.close()
 
 def create_mnemonic(charset, wordlist):
     '''Return an array of words from wordlist which covers all characters in charset.'''
     # Inner function: How many characters do these two strings have in common?
-    word_score = lambda(word) : len(set(word).intersection(charset))
+    word_score = lambda word : len(set(word).intersection(charset))
     out = []
     unused_words = wordlist[:]
     while charset:
         try:
             bestword = max(unused_words, key=word_score)
         except ValueError:
-            print 'No further mnemonics can be found.'
+            print('No further mnemonics can be found.')
             return []
         out.append(bestword)
         # Subtract the bestword from the remaining characters to cover
@@ -32,22 +34,22 @@ def subset_words(dictionary, charlist, use_vowels, also):
         charlist = charlist.union( set('aeiou') )
     if also:
         charlist = charlist.union( set(also) )
-    is_subset = lambda(word) : set(word).issubset(charlist)
+    is_subset = lambda word : set(word).issubset(charlist)
     return filter(is_subset, dictionary)
 
 def main(charlist, min_word_len, max_word_len, dictfile, use_vowels, also):
-    print "==> MnemonicFinder v1.0"
-    print "--> Loading dictionary..."
+    print("==> MnemonicFinder v1.0")
+    print("--> Loading dictionary...")
     dictionary = load_dictionary(min_word_len, max_word_len, dictfile)
-    print "--> Search string:", charlist
+    print("--> Search string:", charlist)
     charset = set(charlist.lower()) - set(also)
     words = sorted( subset_words(dictionary, charset, use_vowels, also) , key=len)
     # Build some mnemonics
-    print '--> Generating...'
+    print('--> Generating...')
     while True:
         mnemonic = create_mnemonic(charset, words)
         if not mnemonic: break
-        print '--> Mnemonic:', ' '.join(mnemonic)
+        print ('--> Mnemonic:', ' '.join(mnemonic))
         i = words.index(mnemonic[0])
         words = words[:i] + words[i+1:]
 
